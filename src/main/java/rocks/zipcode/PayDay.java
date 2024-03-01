@@ -7,7 +7,7 @@ package rocks.zipcode;
  * output: "Kris 215.00 10.75 204.25”
  */
 public class PayDay {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         PayDay payday = new PayDay();
 
         StringBuilder outputReport = new StringBuilder();
@@ -25,7 +25,7 @@ public class PayDay {
             double d = card.getDeductionRate();
 
             // you need to change the parameters on the method to take the input!
-            String result = payday.pay(n, r, w, d);
+            String result = payday.pay(n, w, r, d);
 
             outputReport.append(result);
             outputReport.append("\n");
@@ -43,7 +43,10 @@ public class PayDay {
      * @return a string of the form "Kris 215.00 10.75 204.25”
      */
     public String pay(String n, double rate, double worked, double deduct) {
-        return null;
+        double grossPay = rate*worked;
+        double deduction = grossPay*deduct;
+        double netPay = grossPay-deduction;
+        return String.format("%s %.2f %.2f %.2f",n,grossPay,deduction,netPay);
     }
 
 
